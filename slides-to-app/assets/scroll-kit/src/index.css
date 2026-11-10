@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+/*
+ * Design tokens, derived from the deck's theme.
+ * Swap --font-display / --font-sans for Avant Garde Demi SFDC and Salesforce Sans
+ * if licensed web fonts become available.
+ */
+@theme {
+  --font-display: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-950: #000f33;
+  --color-navy-900: #001e5b;
+  --color-navy-800: #002775;
+  --color-navy-700: #0b2f86;
+  --color-royal: #022ac0;
+  --color-royal-600: #0a3be0;
+  --color-cyan: #00b3ff;
+  --color-cyan-soft: #90d0fe;
+  --color-sky: #eaf5fe;
+  --color-paper: #f5f9ff;
+  --color-link: #066afe;
+  --color-teal: #04e1cb;
+  --color-gold: #fcc003;
+  --color-pink: #ff538a;
+  --color-violet: #d17dfe;
+  --color-won: #2e9e4f;
+  --color-lost: #e5372b;
+  --color-risk: #f08c00;
+  --color-ink: #001e5b;
+  --color-ink-soft: #4a5b82;
+  --color-ink-faint: #8a97b5;
+  --color-line: #dbe6f6;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-cyan) 30%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    line-height: 1.02;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .glass {
+    background: color-mix(in srgb, white 72%, transparent);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  }
+
+  .card {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow:
+      0 1px 2px rgb(0 30 91 / 0.04),
+      0 12px 32px -12px rgb(0 30 91 / 0.12);
+  }
+
+  .hairline {
+    border-color: var(--color-line);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

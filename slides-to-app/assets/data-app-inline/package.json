@@ -1,0 +1,7 @@
+{
+  "name": "data-app-inline",
+  "private": true,
+  "type": "module",
+  "description": "Packs a Vite build into text-only files for a Tableau data app workspace",
+  "dependencies": { "acorn": "^8.14.0", "jsdom": "^26.0.0" }
+}
